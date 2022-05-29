@@ -110,7 +110,7 @@
 }
 
 .main .tabs .tab {
-  background: #fff;
+  /* background: #fff; */
   padding: 10px;
   margin-right: 13px;
   border-radius: 3px;
@@ -118,7 +118,7 @@
 }
 
 .active-tabs {
-  background: #2185d0;
+  background-color: #2185d0;
   color: white;
 }
 
@@ -136,9 +136,15 @@
   display: flex;
 }
 
-.movie-card:not(:first-child) {
+/* .movie-card:not(:first-child) {
+  margin-top: 20px;
+} */
+
+
+.movie-card {
   margin-top: 20px;
 }
+
 
 .movie-card:last-child {
   margin-bottom: 50px;
