@@ -11,10 +11,24 @@ class Navbar extends React.Component {
         }
     }
     handleAddToMovies = (movie) => {
-        this.props.dispatch(addMovieToList(movie));
-        this.setState({
-            showSearchResults: false,
-        })
+        // to get the full plot
+        const url = `http://www.omdbapi.com/?apikey=13192e46&i=${movie.imdbID}&plot=full`;
+        fetch(url)
+            .then(response => response.json())
+            .then(Movie => {
+                console.log(Movie);
+
+                // dispatch an action
+                // dispatch(addMovieSearchResult(movie))
+                this.props.dispatch(addMovieToList(Movie));
+                this.setState({
+                    showSearchResults: false,
+                })
+            });
+        // this.props.dispatch(addMovieToList(movie));
+        // this.setState({
+        //     showSearchResults: false,
+        // })
     }
     handleChange = (e) => {
         this.setState({
@@ -36,13 +50,25 @@ class Navbar extends React.Component {
                     <button id="search-btn" onClick={this.handleSearch}>search</button>
                     {showSearchResults &&
                         <div className="search-results">
-                            <div className="search-result">
+                            {result.Search.map((movie, index) => (
+                                // unique key for every movie
+                                <div className="search-result">
+                                    <img src={movie.Poster} alt='search-pic' />
+                                    <div className="movie-info">
+                                        <span>{movie.Title}</span>
+                                        <div className="search-button-container">
+                                            <button className="add_movie_btn" onClick={() => this.handleAddToMovies(movie)}>add to list</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                            {/* <div className="search-result">
                                 <img src={result.Poster} alt='search-pic' />
                                 <div className="movie-info">
                                     <span>{result.Title}</span>
-                                    <button onClick={() => this.handleAddToMovies(result)}>Add to Movies</button>
+                                    <button className="add_movie_btn" onClick={() => this.handleAddToMovies(result)}>add to list</button>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     }
                 </div>

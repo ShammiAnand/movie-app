@@ -30,8 +30,9 @@ export function addFavourites(movie) {
 }
 
 export function handleMovieSearch(movie) {
+    // http://www.omdbapi.com/?apikey=13192e46&i=tt2975590&plot=full
     // http://www.omdbapi.com/?apikey=13192e46&
-    const url = `http://www.omdbapi.com/?apikey=13192e46&t=${movie}`;
+    const url = `http://www.omdbapi.com/?apikey=13192e46&s=${movie}`;
     return function (dispatch) {
         fetch(url)
             .then(response => response.json())

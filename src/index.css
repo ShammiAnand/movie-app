@@ -44,12 +44,28 @@
   z-index: 100;
 }
 
-.search-result .movie_info {
+.search-results {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
+.add_movie_btn {
+  background: #21ba45;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 4px;
+}
+
+.search-button-container {
+  margin: 5px;
+  margin-top: 10px;
+}
+
+/* 
 .search-result .movie_info button {
   margin: 20px 10px;
   background: #21ba45;
@@ -59,14 +75,16 @@
   border: none;
   padding: 9px 0;
   border-radius: 4px;
-}
+} */
 
 .search-result {
+  margin-top: 5px;
   display: flex;
+  flex-direction: row;
 }
 
 .search-result img {
-  height: 150px;
+  height: 100px;
 }
 
 .search-result>div span {
