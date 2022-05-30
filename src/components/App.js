@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from './Navbar';
 import MovieCard from './MovieCard';
-import { data } from '../data';
+// import { data } from '../data';
 import { addMovies, addFavourites, setShowFavourites } from "../actions";
 
 class App extends React.Component {
@@ -15,7 +15,7 @@ class App extends React.Component {
 
     // make api call
     // dispatch action
-    store.dispatch(addMovies(data));
+    // store.dispatch(addMovies(data));
 
     console.log('STATE', store.getState());
   }
@@ -36,13 +36,13 @@ class App extends React.Component {
 
   render() {
     // redux store's default state is being passed to App component via props from src>index.js
-    const { movies } = this.props.store.getState();  // {movies:{}, search:{}}
+    const { movies, search } = this.props.store.getState();  // {movies:{}, search:{}}
     const { list, favourites, showFavourites } = movies;
     console.log('RENDER', this.props.store.getState());
     const displayMovies = showFavourites ? favourites : list;
     return (
       <div className="App" >
-        <Navbar />
+        <Navbar dispatch={this.props.store.dispatch} search={search} />
         <div className="main">
           <div className="tabs">
             <div className={`tab ${showFavourites ? '' : 'active-tabs'}`} onClick={() => this.onChangeTab(false)}>Movies</div>

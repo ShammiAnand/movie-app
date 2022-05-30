@@ -23,13 +23,13 @@ class MovieCard extends React.Component {
                 </div>
                 <div className="right">
                     <div className="title">
-                        {movie.title}
+                        {movie.Title}
                     </div>
                     <div className="plot">
-                        {movie.description}
+                        {movie.Plot}
                     </div>
                     <div className="footer">
-                        <div className="rating">{movie.users_rating}</div>
+                        <div className="rating">{movie.imdbRating}</div>
                         {
                             isFavourite
                                 ? <button className="unfavourite-btn" onClick={this.handleUnfavouriteClick}>Unfavourite</button>
